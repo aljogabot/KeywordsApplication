@@ -1,0 +1,16 @@
+{
+  "name": "faqkeywords",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "resources/assets/bower_components/",
+    "test",
+    "tests"
+  ]
+}
