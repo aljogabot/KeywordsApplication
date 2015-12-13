@@ -7,4 +7,8 @@ Homestead.json
 /resources/assets/bower_components
 
 
-/public
+/public/css
+/public/js
+/public/fonts
+/public/images
+/public/packages
