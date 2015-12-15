@@ -33,7 +33,8 @@ BootstrapModalService.prototype = {
 
 		$( 'div#modal-container' ).on( 'shown.bs.modal', 
 			function (e) {
-  				callback();
+				if( callback )
+  					callback();
 			}
 		);
 

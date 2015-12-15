@@ -5,7 +5,7 @@ FormMessageService.prototype = {
 	element : false,
 
 	setElement : function( $form ) {
-		this.element = $form.find( '.alert' );
+		this.element = $form.find( '.alert.form-message' );
 	},
 
 	error : function( $message ) {
@@ -25,6 +25,10 @@ FormMessageService.prototype = {
 
 	normal : function() {
 		this.element.attr( 'class', 'alert' ).show();
+	},
+
+	hide : function() {
+		this.element.attr( 'class', 'alert' ).hide();	
 	}
 
 };

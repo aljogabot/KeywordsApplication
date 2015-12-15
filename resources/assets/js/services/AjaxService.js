@@ -19,6 +19,27 @@ AjaxService.prototype = {
 		);
 	},
 
+	postUpload : function( $url, $data, callback ) {
+		$.ajax(
+			{
+				url	: $url,
+				type: 'POST',
+				dataType: 'json',
+				data: $data,
+				async: false,
+				cache: false,
+		        contentType: false,
+		        processData: false,
+				headers: {
+			        'X-CSRF-Token': $( 'meta[name="csrf-token"]' ).attr( 'content' )
+			    },
+				success: function( $json_response ) {
+					callback( $json_response );
+				}
+			}
+		);
+	},
+
 	get : function( $url, $parameters, callback ) {
 		// Some Other Time Baby ...
 	}

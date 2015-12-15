@@ -25,7 +25,8 @@ elixir(
 		$mix.styles(
 			[
 				'fonts.css',
-				'bootstrap.min.css'
+				'bootstrap.min.css',
+				'application.css'
 			],
 			'public/css/app-all.css'
 		);
@@ -37,10 +38,11 @@ elixir(
 				'services/UrlService.js',
 				'services/AjaxService.js',
 				'services/FormMessageService.js',
-				'services/BootstrapModalService.js'
+				'services/BootstrapModalService.js',
+				'views/keywords.index.js'
 			],
 			'public/js/app-all.js'
-		);
+		).version( 'public/js/app-all.js', 'public/build' );
 
 	}
 );

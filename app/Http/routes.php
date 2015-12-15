@@ -11,6 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get( '/', [ 'as' => 'keywords', 'uses' => 'KeywordsController@index' ] );
+
+Route::post( '/keywords/preview-selection', [ 'as' => 'keyword-preview-selection', 'uses' => 'KeywordsController@preview' ] );
+Route::post( '/keywords/multiplied', [ 'as' => 'keyword-multiplied', 'uses' => 'KeywordsController@multiplied' ] );
