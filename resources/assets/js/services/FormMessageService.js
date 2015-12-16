@@ -24,11 +24,11 @@ FormMessageService.prototype = {
 	},
 
 	normal : function() {
-		this.element.attr( 'class', 'alert' ).show();
+		this.element.attr( 'class', 'alert form-message' ).show();
 	},
 
 	hide : function() {
-		this.element.attr( 'class', 'alert' ).hide();	
+		this.element.attr( 'class', 'alert form-message' ).hide();	
 	}
 
 };

@@ -4,7 +4,7 @@
         <h4 class="modal-title">Keyword Results:</h4>
     </div>
     <div class="modal-body">
-        <div class="alert" style="display: none;"></div>
+        <div class="alert form-message" style="display: none;"></div>
         <div class="alert alert-info">
             <h4 style="margin-bottom: 3px;">Multiplied Keywords</h4>
         </div>

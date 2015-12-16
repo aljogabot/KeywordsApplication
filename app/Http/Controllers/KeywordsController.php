@@ -65,7 +65,7 @@ class KeywordsController extends Controller
 
     public function multiplied( Request $request )
     {
-        $this->keywordValidation->init( 
+        $this->keywordValidation->init(
             [ 'phrasesFromLeft' => $request->get( 'leftPhrases' ), 'phrasesFromRight' => $request->get( 'rightPhrases' ) ] 
         );
 
