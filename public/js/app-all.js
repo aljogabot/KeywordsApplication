@@ -231,6 +231,7 @@ KeywordsIndex.prototype = {
 				var $data = new FormData( $form[0] );
 
 				$FormMessageService.setElement( $form );
+				$FormMessageService.notify( 'Processing ...' );
 
 				$http.postUpload( $form.attr( 'action' ), $data,
 					function( $json_response ) {
