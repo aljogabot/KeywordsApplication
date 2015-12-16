@@ -90,12 +90,28 @@ class KeywordService {
 	{
 		if( $this->fileExtension == 'txt' )
 		{
-			$this->fileContent = explode( "\n", $this->fileContent );
+			if( strstr( $this->fileContent, "\n" ) )
+			{
+				$this->fileContent = explode( "\n", $this->fileContent );	
+			}
+
+			if( strstr( $this->fileContent, "\r" ) )
+			{
+				$this->fileContent = explode( "\r", $this->fileContent );
+			}
 		}
 
 		if( $this->fileExtension == 'csv' )
 		{
-			$this->fileContent = explode( "\n", $this->fileContent );	
+			if( strstr( $this->fileContent, "\n" ) )
+			{
+				$this->fileContent = explode( "\n", $this->fileContent );	
+			}
+
+			if( strstr( $this->fileContent, "\r" ) )
+			{
+				$this->fileContent = explode( "\r", $this->fileContent );
+			}
 		}
 	}
 
