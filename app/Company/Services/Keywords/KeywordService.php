@@ -95,7 +95,7 @@ class KeywordService {
 
 		if( $this->fileExtension == 'csv' )
 		{
-			$this->fileContent = explode( ",", $this->fileContent );	
+			$this->fileContent = explode( "\n", $this->fileContent );	
 		}
 	}
 
