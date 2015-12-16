@@ -39,7 +39,7 @@ class KeywordValidation {
 
 		if( $this->threshold < 1 || $this->threshold > 99 )
 		{
-			$this->errors[] = 'Threshold must be greater than 1 and less than 100';
+			$this->errors[] = 'Threshold must be greater than 0 and less than 100';
 			return FALSE;	
 		}
 
