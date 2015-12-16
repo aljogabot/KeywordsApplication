@@ -27,6 +27,9 @@ class KeywordService {
 		
 		foreach( $this->fileContent as $wordLine )
 		{
+			if( empty( $wordLine ) )
+				continue;
+
 			$wordLine = $this->sanitize( $wordLine );
 			$wordsLine = explode( " ", $wordLine );
 			$reversedWordsLine = array_reverse( $wordsLine );
@@ -90,12 +93,17 @@ class KeywordService {
 	{
 		if( $this->fileExtension == 'txt' )
 		{
-			if( strstr( $this->fileContent, "\n" ) )
+			if( strstr( $this->fileContent, "\r\n" ) )
 			{
-				$this->fileContent = explode( "\n", $this->fileContent );	
+				$this->fileContent = explode( "\r\n", $this->fileContent );
 			}
 
-			if( strstr( $this->fileContent, "\r" ) )
+			if( ! is_array( $this->fileContent ) && strstr( $this->fileContent, "\n" ) )
+			{
+				$this->fileContent = explode( "\n", $this->fileContent );
+			}
+
+			if( ! is_array( $this->fileContent ) && strstr( $this->fileContent, "\r" ) )
 			{
 				$this->fileContent = explode( "\r", $this->fileContent );
 			}
@@ -103,12 +111,17 @@ class KeywordService {
 
 		if( $this->fileExtension == 'csv' )
 		{
-			if( strstr( $this->fileContent, "\n" ) )
+			if( strstr( $this->fileContent, "\r\n" ) )
 			{
-				$this->fileContent = explode( "\n", $this->fileContent );	
+				$this->fileContent = explode( "\r\n", $this->fileContent );
 			}
 
-			if( strstr( $this->fileContent, "\r" ) )
+			if( ! is_array( $this->fileContent ) && strstr( $this->fileContent, "\n" ) )
+			{
+				$this->fileContent = explode( "\n", $this->fileContent );
+			}
+
+			if( ! is_array( $this->fileContent ) && strstr( $this->fileContent, "\r" ) )
 			{
 				$this->fileContent = explode( "\r", $this->fileContent );
 			}
