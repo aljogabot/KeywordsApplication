@@ -19,6 +19,13 @@ AjaxService.prototype = {
 		);
 	},
 
+	/**
+	 * This method is for Uploading Files ...
+	 * @param  {[type]}   $url     [description]
+	 * @param  {[type]}   $data    [description]
+	 * @param  {Function} callback [description]
+	 * @return {[type]}            [description]
+	 */
 	postUpload : function( $url, $data, callback ) {
 		$.ajax(
 			{
