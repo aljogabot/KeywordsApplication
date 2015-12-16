@@ -23,6 +23,8 @@ KeywordsIndex.prototype = {
 
 				var $data = new FormData( $form[0] );
 
+				$FormMessageService.setElement( $form );
+
 				$http.postUpload( $form.attr( 'action' ), $data,
 					function( $json_response ) {
 						if( $json_response.success ) {
@@ -32,6 +34,7 @@ KeywordsIndex.prototype = {
 									$self.init_multiply_form();
 								}
 							);
+							$FormMessageService.notify( 'This is an App where you can multiply your selected keywords ...' );
 						} else {
 							$FormMessageService.error( $json_response.message );
 						}

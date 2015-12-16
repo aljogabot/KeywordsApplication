@@ -3,7 +3,7 @@
     <form name="keywords-form" method="POST" action="{{ URL::route( 'keyword-preview-selection' ) }}" accept-charset="UTF-8" enctype="multipart/form-data">
         <h2 class="form-signin-heading">FAQ Keywords Multiplier</h2>
         <br />
-        <div class="alert alert-info">This is an App where you can multiply your selected keywords ...</div>
+        <div class="alert alert-info form-message">This is an App where you can multiply your selected keywords ...</div>
 
         <div class="form-group">
             <label for="mult_threshold">Enter Threshold</label>
