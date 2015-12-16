@@ -69,6 +69,8 @@ class KeywordsController extends Controller
             [ 'phrasesFromLeft' => $request->get( 'leftPhrases' ), 'phrasesFromRight' => $request->get( 'rightPhrases' ) ] 
         );
 
+        // Validate Phrases, Make Sure The User Selects
+        // From the List ...
         if( ! $this->keywordValidation->validatePhrases() )
             return $this->json->error( $this->keywordValidation->getErrors() );
 

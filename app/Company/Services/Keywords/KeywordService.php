@@ -29,24 +29,18 @@ class KeywordService {
 		{
 			$wordLine = $this->sanitize( $wordLine );
 			$wordsLine = explode( " ", $wordLine );
+			$reversedWordsLine = array_reverse( $wordsLine );
 
-			$phrase = '';
+			$leftPhrase = '';
 			foreach( $wordsLine as $word )
 			{
-				$phrase = $this->processPhrasesFrom( 'Left', $phrase, $word );
+				$leftPhrase = $this->processPhrasesFrom( 'Left', $leftPhrase, $word );
 			}
-		}
 
-		foreach( $this->fileContent as $wordLine )
-		{
-			$wordLine = $this->sanitize( $wordLine );
-			$wordsLine = explode( " ", $wordLine );
-			$wordsLine = array_reverse( $wordsLine );
-
-			$phrase = '';
-			foreach( $wordsLine as $word )
+			$rightPhrase = '';
+			foreach( $reversedWordsLine as $word )
 			{
-				$phrase = $this->processPhrasesFrom( 'Right', $phrase, $word );
+				$rightPhrase = $this->processPhrasesFrom( 'Right', $rightPhrase, $word );
 			}
 		}
 
