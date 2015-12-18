@@ -52,9 +52,7 @@ class KeywordsController extends Controller
         $threshold = $request->get( 'threshold' );
         $file = $request->file( 'file' );
 
-        // We are still testing baby ...
-        // Uncomment this when done ...
-        // $this->keywordSession->flush();
+        $this->keywordSession->destroy();
 
         // Validation of Upload ...
         $this->keywordValidation->init( [ 'threshold' => $threshold, 'file' => $file ] );
@@ -105,7 +103,6 @@ class KeywordsController extends Controller
     {
         $this->keywordSession->setSecondSelection( $request->get( 'keywords' ) );
         
-        //$this->keywordService->setData( $this->keywordSession->getKeywordsData() );
         $this->keywordService->setFirstSelection( $this->keywordSession->getFirstSelection() );
         $this->keywordService->setSecondSelection( $this->keywordSession->getSecondSelection() );
 
@@ -139,6 +136,6 @@ class KeywordsController extends Controller
 
         // our response, this will be equivalent to your download() but
         // without using a local file
-        return \Response::make(rtrim($output, "\n"), 200, $headers);
+        return \Response::make( rtrim( $output, "\n" ), 200, $headers );
     }
 }

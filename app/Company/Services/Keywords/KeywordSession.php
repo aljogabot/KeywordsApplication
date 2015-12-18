@@ -29,9 +29,11 @@ class KeywordSession {
         }
 	}
 
-	public function flush()
+	public function destroy()
 	{
-		Session::flush();
+		Session::forget( 'firstSelection' );
+		Session::forget( 'secondSelection' );
+		Session::forget( 'keywordsData' );
 	}
 
 	public function setKeywordsData( $data )
