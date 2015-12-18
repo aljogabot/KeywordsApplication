@@ -1,6 +1,6 @@
 @extends( 'layout' )
 @section( 'content' )
-    <form name="keywords-form" method="POST" action="{{ URL::route( 'keyword-preview-selection' ) }}" accept-charset="UTF-8" enctype="multipart/form-data">
+    <form name="keywords-form" method="POST" action="{{ URL::route( 'keywords-process-user-input' ) }}" accept-charset="UTF-8" enctype="multipart/form-data">
         <h2 class="form-signin-heading">FAQ Keywords Multiplier</h2>
         <br />
         <div class="alert alert-info form-message">This is an App where you can multiply your selected keywords ...</div>

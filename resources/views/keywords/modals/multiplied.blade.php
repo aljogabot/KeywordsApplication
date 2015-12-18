@@ -34,6 +34,7 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save to File</button>
+        <button type="button" class="btn btn-default back-to-second-selection" data-url="{{ URL::route( 'keywords-second-selection-preview' ) }}">Back</button>
+        <a href="{{ URL::route( 'keywords-save-to-file' ) }}" class="btn btn-primary">Save to File</a>
     </div>
 </div><!-- /.modal-content -->

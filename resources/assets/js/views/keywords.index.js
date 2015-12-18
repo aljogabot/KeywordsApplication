@@ -32,7 +32,7 @@ KeywordsIndex.prototype = {
 							$BootstrapModalService.setContent( $json_response.content ).load(
 								function()
 								{
-									$self.init_multiply_form();
+									$self.init_first_preview_form();
 								}
 							);
 							$FormMessageService.notify( 'This is an App where you can multiply your selected keywords ...' );
@@ -55,9 +55,13 @@ KeywordsIndex.prototype = {
 		);
 	},
 
-	init_multiply_form : function()
+	init_first_preview_form : function()
 	{
-		$( 'form[name=keywords-preview-form]' ).submit(
+		var $self = this;
+
+		$( "#modal-container" ).animate( { scrollTop: $( 'h4.modal-title' ).offset().top - 80 }, 800 );
+
+		$( 'form[name=keywords-first-preview-form]' ).submit(
 			function( $event )
 			{
 				$event.preventDefault();
@@ -70,9 +74,96 @@ KeywordsIndex.prototype = {
 				$http.post( $form.attr( 'action' ), $data,
 					function( $json_response ) {
 						if( $json_response.success ) {
-							$BootstrapModalService.setContent( $json_response.content ).load();
+							$BootstrapModalService.setContent( $json_response.content ).load(
+								function()
+								{
+									$self.init_second_preview_form();
+								}
+							).scrollToTitle();
 						} else {
 							$FormMessageService.error( $json_response.message );
+						}
+					}
+				);
+			}
+		);
+	},
+
+	init_second_preview_form : function()
+	{
+		var $self = this;
+
+		$( '.back-to-first-selection' ).click(
+			function( $event ) 
+			{
+				$event.preventDefault();
+				$http.post(
+					$( this ).data( 'url' ), {}, 
+					function( $json_response )
+					{
+						if( $json_response.success )
+						{
+							$BootstrapModalService.setContent( $json_response.content ).load(
+								function()
+								{
+									$self.init_first_preview_form();
+								}
+							).scrollToTitle();
+						}
+					}
+				);
+			}
+		);
+		
+		$( 'form[name=keywords-second-preview-form]' ).submit(
+			function( $event )
+			{
+				$event.preventDefault();
+				var $form = $( this );
+				var $data = $form.serialize();
+
+				$FormMessageService.setElement( $form );
+				$FormMessageService.notify( 'Processing ...' );
+
+				$http.post( $form.attr( 'action' ), $data,
+					function( $json_response ) {
+						if( $json_response.success ) {
+							$BootstrapModalService.setContent( $json_response.content ).load(
+								function()
+								{
+									$self.init_download_to_file();
+								}
+							).scrollToTitle();
+						} else {
+							$FormMessageService.error( $json_response.message );
+						}
+					}
+				);
+			}
+		);
+
+	},
+
+	init_download_to_file : function()
+	{
+		var $self = this;
+
+		$( '.back-to-second-selection' ).click(
+			function( $event ) 
+			{
+				$event.preventDefault();
+				$http.post(
+					$( this ).data( 'url' ), {}, 
+					function( $json_response )
+					{
+						if( $json_response.success )
+						{
+							$BootstrapModalService.setContent( $json_response.content ).load(
+								function()
+								{
+									$self.init_second_preview_form();
+								}
+							).scrollToTitle();
 						}
 					}
 				);

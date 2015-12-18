@@ -31,12 +31,19 @@ BootstrapModalService.prototype = {
 			this.modal = $( '#modal-container' ).modal( 'show' );	
 		}
 
-		$( 'div#modal-container' ).on( 'shown.bs.modal', 
+		/*$( 'div#modal-container' ).on( 'shown.bs.modal', 
 			function (e) {
-				if( callback )
+				if( callback ) {
   					callback();
+  					$fired = true;
+				}
 			}
-		);
+		);*/
+
+		if( callback )
+		{
+			callback();
+		}
 
 		return this;
 	},
@@ -52,6 +59,11 @@ BootstrapModalService.prototype = {
 
 	getContent : function() {
 		return $( 'div#modal-container .modal-dialog' ).html();
+	},
+
+	scrollToTitle : function()
+	{
+		$( "#modal-container" ).animate( { scrollTop: $( 'h4.modal-title' ).offset().top - 80 }, 800 );
 	}
 	
 };

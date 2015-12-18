@@ -11,6 +11,10 @@ class KeywordService {
 	public $phrasesFromLeft = [];
 	public $phrasesFromRight = [];
 
+
+	protected $firstSelection = [];
+	protected $secondSelection = [];
+
 	public function init( $configuration )
 	{
 		foreach( $configuration as $property => $value )
@@ -143,21 +147,34 @@ class KeywordService {
 		return [ 
 			'phrasesFromLeft' 	 => $this->phrasesFromLeft,
 			'phrasesFromRight' 	 => $this->phrasesFromRight,
-			'totalLeftPhrases'   => $totalLeftPhrases,
-			'totalRightPhrases'  => $totalRightPhrases,
+			'totalPhrasesFromLeft'   => $totalLeftPhrases,
+			'totalPhrasesFromRight'  => $totalRightPhrases,
 			'totalKeywords'   	 => $totalLeftPhrases + $totalRightPhrases
 		];
+	}
+
+	public function setFirstSelection( $data )
+	{
+		$this->firstSelection = $data;
+	}
+
+	public function setSecondSelection( $data )
+	{
+		$this->secondSelection = $data;	
 	}
 
 	public function getMultipliedPhrases()
 	{
 		$output = [];
 
-		foreach( $this->phrasesFromRight as $rightPhrase )
+		foreach( $this->secondSelection as $secondSelectionPhrase )
 		{
-			foreach( $this->phrasesFromLeft as $leftPhrase )
+			foreach( $this->firstSelection as $firstSelectionPhrase )
 			{
-				$output[] = $leftPhrase . ' ' . $rightPhrase;
+				if( $firstSelectionPhrase == $secondSelectionPhrase )
+					continue;
+
+				$output[] = $firstSelectionPhrase . ' ' . $secondSelectionPhrase;
 			}
 		}
 
